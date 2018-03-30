@@ -11,7 +11,7 @@ def draw_graph(graph, labels=None, graph_layout='shell',
                text_font='sans-serif'):
 
     # create networkx graph
-    G=nx.Graph()
+    G = nx.Graph()
 
     # add edges
     for edge in graph:
@@ -76,8 +76,9 @@ def toposort(edge_list):
             if len(to_selection) == 0:
                 # add node_to to source_set
                 source_set.add(node_to)
-            draw_value_list.append(edge)
+            #draw_value_list.append(edge)
             #draw_graph(draw_value_list)
+            #print(source_set)
 
     if len(edge_set) != 0:
         raise IndexError  # not a direct acyclic graph
@@ -105,4 +106,4 @@ graph_set = [
 print(toposort(graph_set)[0])
 
 #labels = map(chr, range(100, 100 + len(toposort(graph_set)[1])))
-draw_graph(toposort(graph_set)[1])
+#draw_graph(toposort(graph_set)[1])
