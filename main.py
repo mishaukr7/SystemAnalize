@@ -14,7 +14,7 @@ graph = {'planning': set(['foundation']),
          }
 
 print('\nTopological sort, result: \n')
-
+#draw_graph.draw_graph(topologicalsort.graph_set, top_value=[])
 list_of_top = []
 sort_list = topologicalsort.dfs_iterative(graph, 'planning')
 print(sort_list)
