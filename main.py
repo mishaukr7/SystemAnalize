@@ -1,3 +1,6 @@
+import draw_graph
+import topologicalsort
+
 graph = {'planning': set(['foundation']),
          'foundation': set(['walls']),
          'walls': set(['plumbing', 'roof', 'electrical wiring']),
@@ -10,23 +13,11 @@ graph = {'planning': set(['foundation']),
          'settling': set([])
          }
 
+print('\nTopological sort, result: \n')
 
-def dfs(graph, start, visited=None):
-    if visited is None:
-        visited = set()
-    visited.add(start)
-    for next in graph[start] - visited:
-        dfs(graph, next, visited)
-    return visited
-
-
-def dfs_paths(graph, start, goal, path=None):
-    if path is None:
-        path = [start]
-    if start == goal:
-        yield path
-    for next in graph[start] - set(path):
-        yield from dfs_paths(graph, next, goal, path + [next])
-
-
-print(dfs(graph, 'planning'))
+list_of_top = []
+sort_list = topologicalsort.dfs_iterative(graph, 'planning')
+print(sort_list)
+for x in sort_list:
+    list_of_top.append(x)
+    draw_graph.draw_graph(topologicalsort.graph_set, top_value=list_of_top)
